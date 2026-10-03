@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>StudyFlow | Study Planner</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">S</div>
+
+            <div>
+                <h2>StudyFlow</h2>
+                <small>Study Planner</small>
+            </div>
+        </div>
+
+        <nav>
+
+            <button
+                class="nav active"
+                onclick="showSection('dashboard', this)">
+                📊 Dashboard
+            </button>
+
+            <button
+                class="nav"
+                onclick="showSection('schedule', this)">
+                📅 Schedule
+            </button>
+
+            <button
+                class="nav"
+                onclick="showSection('goals', this)">
+                🎯 Study Goals
+            </button>
+
+        </nav>
+
+        <button id="themeBtn" class="theme-btn">
+            🌙 Dark Mode
+        </button>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+                <p class="small">SMART STUDY PLANNER</p>
+
+                <h1>Good Study Day 👋</h1>
+
+                <p class="subtitle">
+                    Plan your learning and reach your goals.
+                </p>
+            </div>
+
+            <div id="date"></div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+
+        <section
+            id="dashboard"
+            class="section active">
+
+            <div class="hero">
+
+                <div>
+
+                    <span>YOUR STUDY JOURNEY</span>
+
+                    <h2>
+                        Learn consistently.<br>
+                        Grow confidently.
+                    </h2>
+
+                    <p>
+                        Keep track of your study sessions,
+                        subjects and learning goals.
+                    </p>
+
+                </div>
+
+                <div class="hero-icon">
+                    📚
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span>📚</span>
+
+                    <div>
+                        <small>Study Sessions</small>
+                        <h2 id="sessions">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <span>🎯</span>
+
+                    <div>
+                        <small>Goals</small>
+                        <h2 id="goalsCount">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <span>✅</span>
+
+                    <div>
+                        <small>Completed</small>
+                        <h2 id="completedGoals">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <span>📈</span>
+
+                    <div>
+                        <small>Progress</small>
+                        <h2 id="progress">0%</h2>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="card">
+
+                    <div class="card-title">
+                        <div>
+                            <small>PROGRESS</small>
+                            <h2>Study Goals</h2>
+                        </div>
+
+                        <strong id="progressText">
+                            0%
+                        </strong>
+                    </div>
+
+                    <div class="progress">
+                        <div id="progressBar"></div>
+                    </div>
+
+                    <p id="progressMessage">
+                        Add study goals to begin.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-title">
+                        <div>
+                            <small>UPCOMING</small>
+                            <h2>Study Sessions</h2>
+                        </div>
+                    </div>
+
+                    <div id="upcoming"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCHEDULE -->
+
+        <section
+            id="schedule"
+            class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <small>SCHEDULE</small>
+                    <h2>Study Sessions</h2>
+                    <p>Plan what you want to study.</p>
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="openSessionForm()">
+                    + Add Session
+                </button>
+
+            </div>
+
+
+            <div
+                id="sessionForm"
+                class="card hidden">
+
+                <h2>New Study Session</h2>
+
+                <form id="sessionFormElement">
+
+                    <input
+                        id="sessionSubject"
+                        placeholder="Subject"
+                        required>
+
+                    <input
+                        id="sessionTopic"
+                        placeholder="Topic to study"
+                        required>
+
+                    <input
+                        id="sessionDate"
+                        type="date"
+                        required>
+
+                    <input
+                        id="sessionTime"
+                        type="time"
+                        required>
+
+                    <button class="primary-btn">
+                        Save Session
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div id="sessionsList"></div>
+
+        </section>
+
+
+        <!-- GOALS -->
+
+        <section
+            id="goals"
+            class="section">
+
+            <div class="section-title">
+
+                <div>
+                    <small>LEARNING TARGETS</small>
+                    <h2>Study Goals</h2>
+                    <p>
+                        Create goals and track your progress.
+                    </p>
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="openGoalForm()">
+                    + Add Goal
+                </button>
+
+            </div>
+
+
+            <div
+                id="goalForm"
+                class="card hidden">
+
+                <h2>New Study Goal</h2>
+
+                <form id="goalFormElement">
+
+                    <input
+                        id="goalName"
+                        placeholder="Goal name"
+                        required>
+
+                    <input
+                        id="goalSubject"
+                        placeholder="Subject"
+                        required>
+
+                    <button class="primary-btn">
+                        Add Goal
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div id="goalList"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
